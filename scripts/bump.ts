@@ -23,6 +23,7 @@ for (const arg of args) {
 const pkgPath = join(import.meta.dir, '..', 'package.json');
 const pkgContent = await Bun.file(pkgPath).text();
 const pkg: Pkg = JSON.parse(pkgContent);
+
 const parts = pkg.version.split('.').map(Number);
 let [major, minor, patch] = parts;
 
