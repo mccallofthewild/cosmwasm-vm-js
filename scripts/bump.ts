@@ -48,5 +48,7 @@ await Bun.write(pkgPath, JSON.stringify(pkg, null, 2) + '\n');
 
 run(['git', 'add', 'package.json']);
 run(['git', 'commit', '-m', `Bump version to v${newVersion}`]);
-run(['git', 'tag', `v${newVersion}`]);
+run(['git', 'tag', `v${ newVersion }`]);
+run(['git', 'push']);
+run(['git', 'push', '--tags']);
 console.log(`Bumped to v${newVersion}`);
