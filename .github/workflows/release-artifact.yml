@@ -1,0 +1,38 @@
+name: Build Release Artifact
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v1
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build package
+        run: npm run build
+
+      - name: Create package tarball
+        run: npm pack
+
+      - name: Rename package
+        run: mv *.tgz cosmwasm-vm-js.tgz
+
+      - name: Upload release artifact
+        uses: softprops/action-gh-release@v1
+        with:
+          files: cosmwasm-vm-js.tgz
