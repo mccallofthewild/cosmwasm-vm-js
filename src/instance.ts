@@ -85,15 +85,15 @@ export class VMInstance {
   }
 
   public allocate_str(str: string): Region {
-    let region = this.allocate(str.length);
-    region.write_str(str);
+    const bytes = new TextEncoder().encode(str);
+    let region = this.allocate(bytes.length);
+    region.write(bytes);
     return region;
   }
 
   public allocate_json(obj: object): Region {
-    let region = this.allocate(JSON.stringify(obj).length);
-    region.write_json(obj);
-    return region;
+    const str = JSON.stringify(obj);
+    return this.allocate_str(str);
   }
 
   public instantiate(env: Env, info: MessageInfo, msg: object): Region {
