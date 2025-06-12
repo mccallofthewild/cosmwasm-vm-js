@@ -93,7 +93,7 @@ export class Region {
    * @param b64 bytes encoded as base64
    */
   public write_b64(b64: string): void {
-    this.write(Buffer.from(b64, 'base64'));
+    this.write(Buffer.from(b64, 'base64') as any);
   }
 
   /**

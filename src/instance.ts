@@ -81,7 +81,7 @@ export class VMInstance {
 
   public allocate_b64(b64: string): Region {
     let bytes = Buffer.from(b64, 'base64');
-    return this.allocate_bytes(bytes);
+    return this.allocate_bytes(bytes as any);
   }
 
   public allocate_str(str: string): Region {
