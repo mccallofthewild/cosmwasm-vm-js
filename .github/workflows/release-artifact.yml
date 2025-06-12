@@ -21,13 +21,13 @@ jobs:
         uses: oven-sh/setup-bun@v1
 
       - name: Install dependencies
-        run: npm install
+        run: bun install
 
       - name: Build package
-        run: npm run build
+        run: bun run build
 
       - name: Create package tarball
-        run: npm pack
+        run: bun pm pack
 
       - name: Rename package
         run: mv *.tgz cosmwasm-vm-js.tgz
