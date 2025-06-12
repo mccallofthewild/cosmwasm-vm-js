@@ -18,7 +18,8 @@
     "test": "dts test",
     "lint": "dts lint",
     "//degit:contracts": "cd contracts && npx degit CosmWasm/cosmwasm/contracts/hackatom#0.16 hackatom",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "bump": "bun scripts/bump.ts"
   },
   "husky": {
     "hooks": {
